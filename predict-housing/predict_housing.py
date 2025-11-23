@@ -1,4 +1,3 @@
-# Import libraries
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,34 +6,39 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-# Step 1: Load the data
+# Load the data
 df = pd.read_csv('housing.csv')
 print("First 5 rows:\n", df.head())
 
-# Step 2: Data cleaning (handle missing values and encode categorical variables)
-df = df.dropna()
+# Data cleaning - drop missing values
+df = df.dropna() # drop NaN values
+
+# Encode categorical variables (example: Location)
 df = pd.get_dummies(df, columns=['Location'], drop_first=True)
 
-# Step 3: Visualize data
+# Visualise data
 sns.pairplot(df)
 plt.show()
 
 sns.heatmap(df.corr(), annot=True, cmap="coolwarm")
 plt.show()
 
-# Step 4: Split data
+# Split data
 X = df.drop('Price', axis=1)
 y = df['Price']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Step 5: Train the model
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Train the model
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-# Step 6: Make predictions
+# Make predictions
 y_pred = model.predict(X_test)
 
-# Step 7: Evaluate the model
+# Evaluate the model
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
@@ -42,21 +46,28 @@ r2 = r2_score(y_test, y_pred)
 print(f"RMSE: {rmse}")
 print(f"R² Score: {r2}")
 
-# Step 8: Visualize predictions
+# Visualise predictions
 plt.scatter(y_test, y_pred, color='blue')
-plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='red', linewidth=2)
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], color='red', linewidth=2)
+
 plt.xlabel("Actual Prices")
 plt.ylabel("Predicted Prices")
 plt.title("Actual vs Predicted Prices")
 plt.show()
 
-# Optional: Predict price for a new house
+# Predict price for a new house (optional)
 new_house = pd.DataFrame({
-    'Size':[1800],
-    'Bedrooms':[3],
-    'Bathrooms':[2],
-    'Age':[10],
-    'Location_City':[1]  # 1 if City, 0 if Suburb
+    'Size': [1800],
+    'Bedrooms': [3],
+    'Bathrooms': [2],
+    'Age': 10,
+    'Location_City': [1] # 1=City 0=Suburb
 })
+
+# Ensure columns match training data
+new_house = new_house.reindex(columns=X_train.columns, fill_value=0)
+
 predicted_price = model.predict(new_house)
-print(f"Predicted Price for the new house: ${predicted_price[0]:,.2f}")
+print("\n<------------------------------>")
+print(f"Predicted price of the new house: £{predicted_price[0]:,.2f}")
+print("<------------------------------>\n")

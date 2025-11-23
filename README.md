@@ -2,7 +2,7 @@
 
 | # | Project | Focus Area |
 |---|----------|-------------|
-| 1 | [Predict housing prices with linear regression](https://github.com/zeropointcoder/100-ai/predict-housing) | Machine Learning |
+| 1 | [Predict housing prices with linear regression](https://github.com/zeropointcoder/100-ai/tree/main/predict-housing) | Machine Learning |
 | 2 | Iris flower classification | Machine Learning |
 | 3 | Handwritten digit recognition (MNIST) | Computer Vision |
 | 4 | Sentiment analysis on movie reviews | NLP |

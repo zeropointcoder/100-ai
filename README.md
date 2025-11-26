@@ -1,4 +1,4 @@
-# 100 AI projects
+# Artificial Instincts - Turing’s Paradox
 
 | # | Project | Focus Area |
 |---|----------|-------------|

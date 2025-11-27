@@ -2,8 +2,8 @@
 
 | # | Project | Focus Area |
 |---|----------|-------------|
-| 1 | [Predict housing prices with linear regression](https://github.com/zeropointcoder/100-ai/tree/main/predict-housing) | Machine Learning |
-| 2 | [Iris flower classification](https://github.com/zeropointcoder/100-ai/tree/main/iris-flower-classifier) | Machine Learning |
+| 1 | [Predict housing prices with linear regression](https://github.com/zeropointcoder/turing-paradox/tree/main/predict-housing) | Machine Learning |
+| 2 | [Iris flower classification](https://github.com/zeropointcoder/turing-paradox/tree/main/iris-flower-classifier) | Machine Learning |
 | 3 | Handwritten digit recognition (MNIST) | Computer Vision |
 | 4 | Sentiment analysis on movie reviews | NLP |
 | 5 | Spam email classifier | NLP |
